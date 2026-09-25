@@ -99,7 +99,7 @@ def append_records(brochure, unit, rows, add_diggaj_watermark=True, add_my_detai
                 for line_index, line in enumerate(lines):
                     akash.tx(page, 201, y + 17 + line_index * 13, line, 9, 'helv', akash.INK)
                 y += height + 4
-        base_pages = 3 if add_my_details else 2
+        base_pages = 3 if add_diggaj_watermark else 2
         total = len(doc)
         for i, page in enumerate(doc):
             if i < base_pages:

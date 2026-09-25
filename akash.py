@@ -304,7 +304,7 @@ def build(u, facing, price, as_bytes=False, add_diggaj_watermark=True, add_my_de
     tx(p, cr.x0 + 10, cr.y0 + 14.5, "UNIT FACING: %s" % facing.upper(), 8.4, "hebo", NAVY)
     lb = "Developer drawing - not to scale"
     tx(p, px1 - 14 - pymupdf.get_text_length(lb, "helv", 7), py1 - 18, lb, 7, "helv", GREY_L)
-    footer(p, 1, add_my_details, 3 if add_my_details else 2)
+    footer(p, 1, add_my_details, 3 if add_diggaj_watermark else 2)
 
     # ══ PAGE 2 — THE PROJECT ══
     p = doc.new_page(width=W, height=H)
@@ -333,7 +333,7 @@ def build(u, facing, price, as_bytes=False, add_diggaj_watermark=True, add_my_de
     th = tw4 * 0.56
     for i, (f, cap, sub) in enumerate(TILES):
         photo(p, pymupdf.Rect(M + i * (tw4 + 12), 406, M + i * (tw4 + 12) + tw4, 406 + th), f, cap, sub)
-    footer(p, 2, add_my_details, 3 if add_my_details else 2)
+    footer(p, 2, add_my_details, 3 if add_diggaj_watermark else 2)
 
     # ══ PAGE 3 — WHY DIGGAJ ══
     p = doc.new_page(width=W, height=H)
@@ -379,7 +379,7 @@ def build(u, facing, price, as_bytes=False, add_diggaj_watermark=True, add_my_de
     if add_my_details: tx(p, M, H - 22, FOOT, 6.6, "helv", GREY)
     tx(p, W - M - pymupdf.get_text_length("3 / 3", "hebo", 7.5), H - 22, "3 / 3", 7.5, "hebo", NAVY)
 
-    if not add_my_details:
+    if not add_diggaj_watermark:
         doc.delete_page(-1)
     out = os.path.join(OUTDIR, "Sobha_Neopolis_Unit_%s_Wing%d_Diggaj_Realty.pdf" % (unit, u["wing"]))
     doc.set_metadata({"title": "SOBHA Neopolis - Unit %s, Wing %d - %s for Sale | Diggaj Realty" % (unit, u["wing"], bhk),
