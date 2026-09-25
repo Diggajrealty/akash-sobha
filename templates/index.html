@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Neopolis Studio | Diggaj Realty</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script defer src="{{ url_for('static', filename='app.js') }}"></script>
+</head>
+<body>
+  <header><a href="/" class="brand"><img src="/brand-logo" alt="Diggaj Realty"></a><span class="header-label">THE NEOPOLIS COLLECTION</span><a class="contact" href="mailto:akash@diggajrealty.com">Contact Akash <span>↗</span></a></header>
+  <main>
+    <div class="intro"><span class="eyebrow">SOBHA NEOPOLIS · PANATHUR, BENGALURU</span><h1>A home worth<br><em>sharing.</em></h1><p>Create a beautifully detailed sales brochure for your Neopolis unit. Ready to download. Ready to share.</p></div>
+    <nav class="tabs" aria-label="Workspace" role="tablist"><button id="studio-tab" class="active" role="tab" aria-selected="true" aria-controls="studio-panel">01 &nbsp; PDF Studio</button><button id="owners-tab" role="tab" aria-selected="false" aria-controls="owners-panel" tabindex="-1">02 &nbsp; Owner Search</button></nav>
+    <section id="studio-panel" class="workspace" role="tabpanel" aria-labelledby="studio-tab">
+      <div class="form-panel"><div class="section-heading"><span class="eyebrow">YOUR NEXT PRESENTATION</span><h2>Start with the unit.</h2><p>We’ll bring in its details and floor plan.</p></div>
+        <form id="generator">
+          <label for="unit">Unit number <span>REQUIRED</span></label><input id="unit" name="unit" placeholder="e.g. 18102" required inputmode="numeric" pattern="[0-9]{4,5}" maxlength="5" autocomplete="off"><p class="hint">Wing + two-digit floor + series. Example: 18102 = Wing 18, Floor 10, Series 2.</p>
+          <div class="field-row"><div><label for="facing">Entry facing <span>OPTIONAL</span></label><select id="facing" name="facing"><option value="">Add later</option><option>North</option><option>South</option><option>East</option><option>West</option><option>North-east</option><option>North-west</option><option>South-east</option><option>South-west</option></select></div><div><label for="price">Asking price <span>IN CRORE</span></label><input id="price" name="price" type="number" min="0.0001" max="999" step="0.0001" placeholder="e.g. 3.90"></div></div>
+          <label class="price-option" for="negotiable"><input id="negotiable" type="checkbox" checked> Show “negotiable” beside the price</label>
+          <label class="price-option" for="add-diggaj-watermark"><input id="add-diggaj-watermark" type="checkbox" checked> Add Diggaj watermark</label>
+          <label class="price-option" for="add-my-details"><input id="add-my-details" type="checkbox" checked> Add my details</label>
+          <p class="hint facing-note">Use the main entry direction shown on the floor plan. Leave facing or price blank to include a placeholder.</p>
+          <div id="combined-option" class="combined-option" hidden><label for="include-owners"><input type="checkbox" id="include-owners"> Include owner records for this unit</label><p id="combined-hint"></p></div>
+          <button id="generate" class="primary" type="submit"><span>Generate & download PDF</span><span aria-hidden="true">↓</span></button>
+          <div id="status" role="status" aria-live="polite"></div><a id="download" class="download" hidden>Download PDF again ↓</a>
+        </form>
+        <div class="form-footer"><span class="dot"></span> Developer floor plans · All 19 wings</div>
+      </div>
+      <aside class="preview-panel"><span class="eyebrow">A CLOSER LOOK</span><div class="paper"><div class="paper-top"><strong>SOBHA<br>NEOPOLIS</strong><span>DIGGAJ<br>REALTY</span></div><div class="gold-line"></div><span class="paper-caption">YOUR UNIT. EVERY DETAIL.</span><div class="paper-body"><div><h3>A place to<br>call home.</h3><p>Configuration & area<br>Floor & entry facing<br>Your asking price</p><div class="mini-lines"></div><small>CURATED BY DIGGAJ REALTY</small></div><div class="plan-art" aria-hidden="true"><div></div><div></div><div></div><div></div><div></div><div></div></div></div><div class="paper-bottom">THE GREEK PARADISE <span>01 / 03</span></div></div><span class="preview-note">Illustrative brochure preview</span><h2>Three pages.<br>The complete picture.</h2><ol><li><span>01</span><div><strong>The home</strong><p>Unit details and a sharp developer floor plan.</p></div></li><li><span>02</span><div><strong>The community</strong><p>Project highlights, amenities and architecture.</p></div></li><li><span>03</span><div><strong>Your realty partner</strong><p>Diggaj services and Akash’s contact details.</p></div></li></ol></aside>
+    </section>
+    <section id="owners-panel" class="owner-workspace" role="tabpanel" aria-labelledby="owners-tab" hidden>
+      <div class="owner-heading"><div><span class="eyebrow">YOUR CLIENT DIRECTORY</span><h2>Find the person. Find the home.</h2><p>Search across all fields in your booked-clients sheet.</p></div><span class="directory-count">{{ record_count }} records · {{ unit_count }} units</span></div>
+      <form id="owner-search" class="search-form"><label class="sr-only" for="query">Search client records</label><input id="query" name="query" placeholder="Name, unit number, phone, email or any detail…" minlength="2" maxlength="120" required autocomplete="off"><button type="submit" class="primary" id="search-button">Search records <span aria-hidden="true">↗</span></button></form>
+      <p class="hint">Try a name or a unit such as 4102. Each result includes all applicants for that unit.</p>
+      <div id="search-status" role="status" aria-live="polite">Your next connection starts with a search.</div>
+      <div id="owner-results"></div><div id="pagination" hidden><button id="previous" class="secondary">← Previous</button><span id="page-label"></span><button id="next" class="secondary">Next →</button></div>
+    </section>
+    <footer><span>DIGGAJ REALTY <b> / </b> NEOPOLIS STUDIO</span><span>Thoughtful advice. Exceptional homes.</span></footer>
+  </main>
+</body></html>

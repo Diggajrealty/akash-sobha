@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+tmp/
+output/
+*.csv
+!data/owners.csv
+.env
+.env.*
+.vercel/
+public/
+
+.vercel

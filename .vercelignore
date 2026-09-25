@@ -1,0 +1,11 @@
+.venv
+.git
+.vercel
+__pycache__
+tmp
+output
+tests
+public
+SalesPresenter
+.env
+.env.*
